@@ -1,11 +1,11 @@
-#ifndef PHP_SPECH_OPUS_H
-#define PHP_SPECH_OPUS_H
+#ifndef PHP_OPUS_H
+#define PHP_OPUS_H
 
 #include "php.h"
 #include <opus/opus.h>
 
-extern zend_module_entry spech_opus_module_entry;
-#define phpext_spech_opus_ptr &spech_opus_module_entry
+extern zend_module_entry opus_module_entry;
+#define phpext_opus_ptr &opus_module_entry
 
 typedef struct _opus_channel_t {
     OpusEncoder *encoder;
