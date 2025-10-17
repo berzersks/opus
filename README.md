@@ -1,44 +1,16 @@
-# 📦 PHP Opus Extension
+# PHP Opus Extension
 
-Uma extensão nativa para PHP que fornece codificação e decodificação de áudio usando o codec [Opus](https://opus-codec.org/), com uma interface orientada a objetos de alto desempenho.
-
+- Codifica áudio PCM 16-bit linear para Opus  
+- Codifica áudio PCM 16-bit linear para Opus  
+- Decodifica frames Opus de volta para PCM  
+- Suporte a taxas de amostragem variáveis (8kHz, 16kHz, 48kHz etc)  
+- Suporte a mono e estéreo  
+- Interface PHP moderna orientada a objetos  
+- Ideal para aplicações VoIP e áudio em tempo real
+- 
 ---
 
-## 🎧 Sobre o Codec Opus
-
-**Opus** é um codec de áudio aberto, versátil e gratuito (sem royalties), padronizado pela [IETF (RFC 6716)](https://datatracker.ietf.org/doc/html/rfc6716). Ele é altamente eficiente para:
-
-- Áudio em tempo real (VoIP, videoconferência)
-- Streaming de música e voz
-- Armazenamento de áudio de alta qualidade
-- Aplicações de baixa latência
-
----
-
-## ✨ Funcionalidades da Extensão
-
-- ✅ Codifica áudio PCM 16-bit linear para Opus  
-- ✅ Decodifica frames Opus de volta para PCM  
-- ✅ Suporte a taxas de amostragem variáveis (8kHz, 16kHz, 48kHz etc)  
-- ✅ Suporte a mono e estéreo  
-- ✅ Interface PHP moderna orientada a objetos  
-- ✅ Ideal para aplicações VoIP e áudio em tempo real  
-
----
-
-## 📂 Estrutura
-
-```
-├── config.m4                # Configuração de build via phpize
-├── php_opus.h              # Header principal
-├── opus.c                  # Entry point da extensão
-├── opus_channel.c          # Implementação da classe opusChannel
-└── README.md               # Este arquivo
-```
-
----
-
-## 🛠️ Requisitos
+## Requisitos
 
 - PHP **7.4+** ou **PHP 8.x**
 - `libopus-dev` instalado no sistema
@@ -47,25 +19,18 @@ Uma extensão nativa para PHP que fornece codificação e decodificação de áu
 
 ---
 
-## 🧪 Instalação (Debian/Ubuntu)
+## Instalação (Debian/Ubuntu)
 
 ```bash
 sudo apt update
 sudo apt install php-dev libopus-dev build-essential
-```
-
----
-
-## ⚙️ Compilando a Extensão
-
-```bash
 phpize
 ./configure --enable-opus
 make -j$(nproc)
 sudo make install
 ```
 
-E adicione ao seu `php.ini`:
+Adicione em `php.ini` a linha:
 
 ```ini
 extension=opus.so
@@ -73,22 +38,56 @@ extension=opus.so
 
 ---
 
-## ✅ Exemplo de uso
+## STUBS e exemplo:
 
 ```php
-<?php
+class opusChannel {
+    public function __construct(int $sample_rate, int $channels) {
+    }
 
-$opus = new opusChannel(16000, 1); // 16kHz mono
+    public function encode(string $pcm_data, int $pcm_rate): string {
+        return "";
+    }
+
+    public function decode(string $encoded_data, int $pcm_rate_out): string {
+        return "";
+    }
+
+    public function setBitrate(int $value) {
+    }
+
+    public function setVBR(bool $enable) {
+    }
+
+    public function setComplexity(int $value) {
+    }
+
+    public function setDTX(bool $enable) {
+    }
+
+    public function setSignalVoice(bool $enable) {
+    }
+
+    public function reset() {
+    }
+
+    public function destroy() {
+    }
+
+}
+$opus = new opusChannel(48000, 1); // 16kHz mono
 
 $pcm = file_get_contents('input.pcm');
-$encoded = $opus->encode($pcm);
 
-$decoded = $opus->decode($encoded);
+// $rateOfCurrentPCMData se trata do rate que seu pcm possui
+$encoded = $opus->encode($pcm, $rateOfCurrentPCMData);
+
+// $ratwOfCurrentEncodedData se trata do rate que você deseja que seu pcm decodificado seja entregue 
+$decoded = $opus->decode($encoded, $ratwOfCurrentEncodedData);
 file_put_contents('output.pcm', $decoded);
 ```
 
 ---
 
-## 📄 Licença
 
-MIT License. Desenvolvido por [@berzersks](https://github.com/berzersks).
+Desenvolvido por [@berzersks](https://github.com/berzersks).
