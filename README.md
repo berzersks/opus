@@ -75,15 +75,20 @@ class opusChannel {
     }
 
 }
-$opus = new opusChannel(48000, 1); // 16kHz mono
+$opus = new opusChannel(48000, 1);
+$opus->setBitrate(8000);
+$opus->setSignalVoice(true);
+$opus->setComplexity(8);
+$opus->setDTX(true);
+$opus->setVBR(true);
 
 $pcm = file_get_contents('input.pcm');
 
-// $rateOfCurrentPCMData se trata do rate que seu pcm possui
-$encoded = $opus->encode($pcm, $rateOfCurrentPCMData);
+// a entrada pcm é 8000Hz
+$encoded = $opus->encode($pcm, 8000);
 
-// $ratwOfCurrentEncodedData se trata do rate que você deseja que seu pcm decodificado seja entregue 
-$decoded = $opus->decode($encoded, $ratwOfCurrentEncodedData);
+// receberemos um pcm de 8000Hz
+$decoded = $opus->decode($encoded, 8000);
 file_put_contents('output.pcm', $decoded);
 ```
 
