@@ -1,8 +1,5 @@
 # PHP Opus Extension
 
-- Codifica áudio PCM 16-bit linear para Opus  
-- Codifica áudio PCM 16-bit linear para Opus  
-- Decodifica frames Opus de volta para PCM  
 - Suporte a taxas de amostragem variáveis (8kHz, 16kHz, 48kHz etc)  
 - Suporte a mono e estéreo  
 - Interface PHP moderna orientada a objetos  
