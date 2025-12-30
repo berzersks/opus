@@ -1,0 +1,12 @@
+-include opus.dep
+opus.lo: /home/lotus/PROJETOS/pcg729/downloads/opus/opus.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/pcg729/downloads/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/pcg729/downloads/opus/opus.c -o opus.lo  -MMD -MF opus.dep -MT opus.lo
+-include opus_channel.dep
+opus_channel.lo: /home/lotus/PROJETOS/pcg729/downloads/opus/opus_channel.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/pcg729/downloads/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/pcg729/downloads/opus/opus_channel.c -o opus_channel.lo  -MMD -MF opus_channel.dep -MT opus_channel.lo
+$(phplibdir)/opus.la: ./opus.la
+	$(LIBTOOL) --tag=CC --mode=install cp ./opus.la $(phplibdir)
+
+./opus.la: $(shared_objects_opus) $(OPUS_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --tag=CC --mode=link $(CC) -shared $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS)  -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_opus) $(OPUS_SHARED_LIBADD)
+
