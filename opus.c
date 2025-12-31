@@ -10,9 +10,10 @@ PHP_MINFO_FUNCTION(opus)
 {
     php_info_print_table_start();
     php_info_print_table_header(2, "Opus Audio Codec Extension", "Information");
-    php_info_print_table_row(2, "Extension Version", "1.0");
+    php_info_print_table_row(2, "Extension Version", PHP_OPUS_VERSION);
     php_info_print_table_row(2, "Status", "enabled");
     php_info_print_table_row(2, "libopus Version", opus_get_version_string());
+    php_info_print_table_row(2, "Compiled", __DATE__ " " __TIME__);
     php_info_print_table_end();
 
     php_info_print_table_start();

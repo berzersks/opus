@@ -1,11 +1,11 @@
-srcdir = /home/lotus/PROJETOS/pcg729/downloads/opus
-builddir = /home/lotus/PROJETOS/pcg729/downloads/opus
-top_srcdir = /home/lotus/PROJETOS/pcg729/downloads/opus
-top_builddir = /home/lotus/PROJETOS/pcg729/downloads/opus
+srcdir = /home/lotus/PROJETOS/opus
+builddir = /home/lotus/PROJETOS/opus
+top_srcdir = /home/lotus/PROJETOS/opus
+top_builddir = /home/lotus/PROJETOS/opus
 EGREP = /usr/bin/grep -E
 SED = /usr/bin/sed
-CONFIGURE_COMMAND = './configure' '--enable-opus'
-CONFIGURE_OPTIONS = '--enable-opus'
+CONFIGURE_COMMAND = './configure' '--with-php-config=/usr/bin/php-config8.3'
+CONFIGURE_OPTIONS = '--with-php-config=/usr/bin/php-config8.3'
 SHLIB_SUFFIX_NAME = so
 SHLIB_DL_SUFFIX_NAME = so
 AWK = nawk
@@ -19,7 +19,7 @@ prefix = /usr
 exec_prefix = $(prefix)
 libdir = ${exec_prefix}/lib
 prefix = /usr
-phplibdir = /home/lotus/PROJETOS/pcg729/downloads/opus/modules
+phplibdir = /home/lotus/PROJETOS/opus/modules
 phpincludedir = /usr/include/php/20230831
 CC = cc
 CFLAGS = -g -O2
@@ -205,11 +205,11 @@ prof-use:
 .PHONY: all clean install distclean test prof-gen prof-clean prof-use
 .NOEXPORT:
 -include opus.dep
-opus.lo: /home/lotus/PROJETOS/pcg729/downloads/opus/opus.c
-	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/pcg729/downloads/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/pcg729/downloads/opus/opus.c -o opus.lo  -MMD -MF opus.dep -MT opus.lo
+opus.lo: /home/lotus/PROJETOS/opus/opus.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/opus/opus.c -o opus.lo  -MMD -MF opus.dep -MT opus.lo
 -include opus_channel.dep
-opus_channel.lo: /home/lotus/PROJETOS/pcg729/downloads/opus/opus_channel.c
-	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/pcg729/downloads/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/pcg729/downloads/opus/opus_channel.c -o opus_channel.lo  -MMD -MF opus_channel.dep -MT opus_channel.lo
+opus_channel.lo: /home/lotus/PROJETOS/opus/opus_channel.c
+	$(LIBTOOL) --tag=CC --mode=compile $(CC) -I. -I/home/lotus/PROJETOS/opus $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -DZEND_COMPILE_DL_EXT=1 -c /home/lotus/PROJETOS/opus/opus_channel.c -o opus_channel.lo  -MMD -MF opus_channel.dep -MT opus_channel.lo
 $(phplibdir)/opus.la: ./opus.la
 	$(LIBTOOL) --tag=CC --mode=install cp ./opus.la $(phplibdir)
 

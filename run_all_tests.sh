@@ -18,7 +18,7 @@ echo -e "${BLUE}╚════════════════════�
 echo ""
 
 # Check if opus extension is loaded
-if ! php -m | grep -q "opus"; then
+if ! /home/lotus/PROJETOS/pcg729/buildroot/bin/php -m | grep -q "opus"; then
     echo -e "${RED}✗ Opus extension not loaded${NC}"
     echo "Make sure to load the extension:"
     echo "  php -dextension=opus.so test.php"
@@ -28,7 +28,7 @@ if ! php -m | grep -q "opus"; then
 fi
 
 echo -e "${GREEN}✓ Opus extension loaded${NC}"
-php -r 'phpinfo(INFO_MODULES);' | grep -A 3 "opus support" || true
+/home/lotus/PROJETOS/pcg729/buildroot/bin/php -r 'phpinfo(INFO_MODULES);' | grep -A 3 "opus support" || true
 echo ""
 
 TOTAL_PASSED=0
@@ -96,7 +96,7 @@ if command -v valgrind &> /dev/null; then
         --track-origins=yes \
         --error-exitcode=1 \
         --quiet \
-        php test_opus_safety.php > /tmp/valgrind_output.txt 2>&1; then
+        /home/lotus/PROJETOS/pcg729/buildroot/bin/php test_opus_safety.php > /tmp/valgrind_output.txt 2>&1; then
         echo -e "${GREEN}✓ No memory leaks detected${NC}"
         TOTAL_PASSED=$((TOTAL_PASSED + 1))
     else

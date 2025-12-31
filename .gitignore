@@ -1,0 +1,6 @@
+atalhos.txt
+*.log
+/modules/
+/include/
+/build/
+/autom4te.cache/

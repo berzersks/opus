@@ -68,15 +68,16 @@ for ($i = 0; $i < 200; $i++) {
         try {
             $decoded = $opus->decode($random_data);
             $successes++;
-        } catch (Error $e) {
+        } catch (Throwable $e) {
             // Decode errors are expected with random data
+            // We just want to ensure it doesn't crash
             $errors++;
         }
     } catch (Throwable $e) {
         $errors++;
     }
 }
-echo "  Successes: $successes, Errors: $errors, Crashes: $crashes\n";
+echo "  Successes: $successes, Expected Errors: $errors, Crashes: $crashes\n";
 
 // Test with random resample parameters
 echo "\n[4/5] Fuzzing resample operations...\n";
@@ -218,7 +219,7 @@ echo "\n=== Pattern-Based Testing ===\n";
 $patterns = [
     'Silence (zeros)' => array_fill(0, 960, 0),
     'DC offset (constant)' => array_fill(0, 960, 10000),
-    'Linear ramp' => range(-16000, 16000, 32768 / 960),
+    'Linear ramp' => range(-16000, 16000, 32000 / 960 + 0.0001),
     'Saw wave' => array_map(function($i) {
         return (($i % 100) - 50) * 650;
     }, range(0, 959)),

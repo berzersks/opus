@@ -89,7 +89,14 @@ static zend_object *opus_channel_create_object(zend_class_entry *ce) {
     object_properties_init(&obj->std, ce);
     obj->std.handlers = &opus_channel_object_handlers;
 
-    obj->intern = NULL;
+    obj->intern = (opus_channel_t *)ecalloc(1, sizeof(opus_channel_t));
+    obj->intern->encoder = NULL;
+    obj->intern->decoder = NULL;
+#ifdef HAVE_LIBSOXR
+    obj->intern->soxr_state = NULL;
+    obj->intern->soxr_src_rate = 0.0;
+    obj->intern->soxr_dst_rate = 0.0;
+#endif
 
     return &obj->std;
 }
@@ -124,7 +131,6 @@ void opus_channel_free_storage(zend_object *object) {
 PHP_METHOD(opusChannel, __construct)
 {
     zend_long sample_rate = 48000, channels = 1;
-    opus_channel_t *intern;
     int err;
 
     ZEND_PARSE_PARAMETERS_START(0, 2)
@@ -146,14 +152,14 @@ PHP_METHOD(opusChannel, __construct)
     }
 
     opus_channel_object *obj = Z_OPUS_CHANNEL_P(ZEND_THIS);
+    opus_channel_t *intern = obj->intern;
 
     // Prevent double initialization
-    if (obj->intern != NULL) {
+    if (intern->encoder != NULL || intern->decoder != NULL) {
         zend_throw_error(NULL, "OpusChannel already initialized");
         RETURN_THROWS();
     }
 
-    intern = ecalloc(1, sizeof(opus_channel_t));
     intern->sample_rate = (int)sample_rate;
     intern->channels = (int)channels;
 
@@ -169,7 +175,6 @@ PHP_METHOD(opusChannel, __construct)
 
     intern->encoder = opus_encoder_create(sample_rate, channels, OPUS_APPLICATION_VOIP, &err);
     if (err != OPUS_OK) {
-        efree(intern);
         zend_throw_error(NULL, "Opus encoder init failed: %s", opus_strerror(err));
         RETURN_THROWS();
     }
@@ -183,18 +188,10 @@ PHP_METHOD(opusChannel, __construct)
     intern->decoder = opus_decoder_create(sample_rate, channels, &err);
     if (err != OPUS_OK) {
         opus_encoder_destroy(intern->encoder);
-        efree(intern);
+        intern->encoder = NULL;
         zend_throw_error(NULL, "Opus decoder init failed: %s", opus_strerror(err));
         RETURN_THROWS();
     }
-
-#ifdef HAVE_LIBSOXR
-    intern->soxr_state = NULL;
-    intern->soxr_src_rate = 0;
-    intern->soxr_dst_rate = 0;
-#endif
-
-    obj->intern = intern;
 }
 
 /* ========= Configurações ========= */
@@ -356,14 +353,13 @@ PHP_METHOD(opusChannel, encode)
     const opus_int16 *in = (const opus_int16*)ZSTR_VAL(pcm_in);
     int in_samples = ZSTR_LEN(pcm_in) / (2 * obj->intern->channels);
 
-    // Validate frame size: Opus supports 2.5, 5, 10, 20, 40, 60, 80, 100, 120ms frames
-    // Calculate valid frame sizes for this sample rate
-    // Frame duration in milliseconds: 2.5, 5, 10, 20, 40, 60, 80, 100, 120
+    // Initialize frame duration and samples for validation
     double frame_durations[] = {0.0025, 0.005, 0.010, 0.020, 0.040, 0.060, 0.080, 0.100, 0.120};
-
     int is_valid = 0;
-    for (int i = 0; i < 9; i++) {
-        int expected_samples = (int)(obj->intern->sample_rate * frame_durations[i]);
+    int i_dur;
+
+    for (i_dur = 0; i_dur < 9; i_dur++) {
+        int expected_samples = (int)(obj->intern->sample_rate * frame_durations[i_dur]);
         if (in_samples == expected_samples) {
             is_valid = 1;
             break;
@@ -475,14 +471,15 @@ PHP_METHOD(opusChannel, resample)
     size_t estimated_out = (size_t)(in_samples * ((double)dst_rate / (double)src_rate) * 1.1) + 64;
     if (estimated_out > 8192 * 6) estimated_out = 8192 * 6;
 
-    opus_int16 *outbuf = emalloc(estimated_out * 2);
+    opus_int16 *outbuf = (opus_int16 *)emalloc(estimated_out * 2);
+    memset(outbuf, 0, estimated_out * 2);
     size_t odone = 0;
 
 #ifdef HAVE_LIBSOXR
     // Use per-instance soxr state instead of static
     if (!obj->intern->soxr_state ||
-        obj->intern->soxr_src_rate != src_rate ||
-        obj->intern->soxr_dst_rate != dst_rate) {
+        obj->intern->soxr_src_rate != (double)src_rate ||
+        obj->intern->soxr_dst_rate != (double)dst_rate) {
 
         if (obj->intern->soxr_state) {
             soxr_delete(obj->intern->soxr_state);
@@ -604,6 +601,9 @@ PHP_METHOD(opusChannel, enhanceVoiceClarity)
     float comp_env = 0.0f;
     const float comp_threshold = 0.3f;
 
+    // Zero out output buffer for safety
+    memset(out, 0, num_samples * 2);
+
     for (size_t i = 0; i < num_samples; i++) {
         float sample = (float)in[i] / 32768.0f;
 
@@ -699,7 +699,8 @@ PHP_METHOD(opusChannel, spatialStereoEnhance)
 
     // Saída sempre em estéreo
     size_t num_frames = num_samples / channels;
-    opus_int16 *out = emalloc(num_frames * 2 * 2);
+    opus_int16 *out = (opus_int16 *)emalloc(num_frames * 2 * 2);
+    memset(out, 0, num_frames * 2 * 2);
 
     // Use per-instance state instead of static
     const size_t delay_samples = (size_t)(depth * 20.0);

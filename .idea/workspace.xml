@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AIDiffSettings">
+    <option name="showAIDiff" value="true" />
+  </component>
+  <component name="AIDiffStorage" id="1">
+    <groups>
+      <group changeListId="53d80029-cfc1-4582-8cae-dfd9fdc0a4e4" id="1" name="Update 'accountId' and 'localTasksCounter' in workspace.xml" description="Update workspace configuration to reflect new GitHub account ID and local task count." importance="0.6">
+        <files>
+          <file summary="Updates GitHub 'accountId', adjusts work item durations, and increments 'localTasksCounter' to '3' in the workspace configuration file." importance="0.6" isPending="false">
+            <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+            <ranges>
+              <range afterLine1="18" afterLine2="18" beforeLine1="18" beforeLine2="19" groupId="1" />
+              <range afterLine1="19" afterLine2="19" beforeLine1="20" beforeLine2="21" groupId="1" />
+              <range afterLine1="52" afterLine2="53" beforeLine1="54" beforeLine2="55" groupId="1" />
+              <range afterLine1="111" afterLine2="113" beforeLine1="113" beforeLine2="114" groupId="1" />
+              <range afterLine1="122" afterLine2="131" beforeLine1="123" beforeLine2="124" groupId="1" />
+            </ranges>
+          </file>
+        </files>
+      </group>
+    </groups>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -16,9 +37,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4dea1af-ba39-40bb-b389-55f78305426c" name="Changes" comment="Add technical documentation for audio enhancement methods and build configuration">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.libs/opus.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.libs/opus.lai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.libs/opus.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.libs/opus.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.libs/opus_channel.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile.fragments" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.fragments" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile.objects" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.objects" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/requests" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/requests" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Makefile.global" beforeDir="false" afterPath="$PROJECT_DIR$/build/Makefile.global" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ax_check_compile_flag.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/ax_check_compile_flag.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ax_gcc_func_attribute.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/ax_gcc_func_attribute.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gen_stub.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/gen_stub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libtool.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/libtool.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ltoptions.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/ltoptions.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ltsugar.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/ltsugar.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ltversion.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/ltversion.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lt~obsolete.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/lt~obsolete.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/php.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/php.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/php_cxx_compile_stdcxx.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/php_cxx_compile_stdcxx.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/pkg.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build/pkg.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.h.in" beforeDir="false" afterPath="$PROJECT_DIR$/config.h.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.log" beforeDir="false" afterPath="$PROJECT_DIR$/config.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.nice" beforeDir="false" afterPath="$PROJECT_DIR$/config.nice" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.status" beforeDir="false" afterPath="$PROJECT_DIR$/config.status" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configure.ac" beforeDir="false" afterPath="$PROJECT_DIR$/configure.ac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/opus.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/opus.so" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/opus.c" beforeDir="false" afterPath="$PROJECT_DIR$/opus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus.dep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus_channel.c" beforeDir="false" afterPath="$PROJECT_DIR$/opus_channel.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus_channel.dep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opus_channel.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php_opus.h" beforeDir="false" afterPath="$PROJECT_DIR$/php_opus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-tests.php" beforeDir="false" afterPath="$PROJECT_DIR$/run-tests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_all_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_all_tests.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_fuzzing.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_fuzzing.php" afterDir="false" />
+    </list>
+    <list id="53d80029-cfc1-4582-8cae-dfd9fdc0a4e4" name="Update 'accountId' and 'localTasksCounter' in workspace.xml" comment="Update workspace configuration to reflect new GitHub account ID and local task count.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +98,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="75" />
+    <option name="cachedIndexableFilesCount" value="77" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -71,29 +137,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "#2 on develop",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="9" />
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -111,7 +180,9 @@
       <updated>1767124588986</updated>
       <workItem from="1767124593031" duration="382000" />
       <workItem from="1767126878188" duration="14000" />
-      <workItem from="1767126904457" duration="136000" />
+      <workItem from="1767126904457" duration="178000" />
+      <workItem from="1767129769704" duration="3000" />
+      <workItem from="1767191043347" duration="3259000" />
     </task>
     <task id="LOCAL-00001" summary="Add technical documentation for audio enhancement methods and build configuration">
       <option name="closed" value="true" />
@@ -121,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767124703121</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add technical documentation for audio enhancement methods and build configuration">
+      <option name="closed" value="true" />
+      <created>1767127049001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1767127049001</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
