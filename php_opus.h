@@ -52,6 +52,10 @@ PHP_METHOD(opusChannel, resample);
 PHP_METHOD(opusChannel, destroy);
 PHP_METHOD(opusChannel, enhanceVoiceClarity);
 PHP_METHOD(opusChannel, spatialStereoEnhance);
+PHP_METHOD(opusChannel, monoToStereo);
+PHP_METHOD(opusChannel, stereoToMono);
+PHP_METHOD(opusChannel, hasLibsoxr);
+PHP_METHOD(opusChannel, getInfo);
 
 void register_opus_channel_class(void);
 void opus_channel_free_storage(zend_object *object);

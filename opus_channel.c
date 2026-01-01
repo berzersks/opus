@@ -1,9 +1,18 @@
 #include "php_opus.h"
+#include "soxr.h"
+
+/* Fallback para versões do soxr sem SOXR_LOW_LATENCY */
+#ifndef SOXR_LOW_LATENCY
+#define SOXR_LOW_LATENCY 0
+#endif
+
 #include <math.h>
 
-#ifdef HAVE_LIBSOXR
-#include "soxr.h"
+#ifndef SOXR_LOW_LATENCY
+#define SOXR_LOW_LATENCY 0
 #endif
+
+
 
 zend_class_entry *opus_channel_ce;
 zend_object_handlers opus_channel_object_handlers;
@@ -33,6 +42,10 @@ PHP_METHOD(opusChannel, reset);
 PHP_METHOD(opusChannel, resample);
 PHP_METHOD(opusChannel, enhanceVoiceClarity);
 PHP_METHOD(opusChannel, spatialStereoEnhance);
+PHP_METHOD(opusChannel, monoToStereo);
+PHP_METHOD(opusChannel, stereoToMono);
+PHP_METHOD(opusChannel, hasLibsoxr);
+PHP_METHOD(opusChannel, getInfo);
 
 /* ========= Argumentos ========= */
 ZEND_BEGIN_ARG_INFO_EX(arginfo_opus_construct, 0, 0, 0)
@@ -79,6 +92,20 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_opus_spatial_stereo, 0, 1, IS_ST
     ZEND_ARG_TYPE_INFO(0, pcm_data, IS_STRING, 0)
     ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 1)
     ZEND_ARG_TYPE_INFO(0, depth, IS_DOUBLE, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_opus_mono_to_stereo, 0, 1, IS_STRING, 0)
+    ZEND_ARG_TYPE_INFO(0, pcm_data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_opus_stereo_to_mono, 0, 1, IS_STRING, 0)
+    ZEND_ARG_TYPE_INFO(0, pcm_data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_opus_has_libsoxr, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_opus_get_info, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
 /* ========= Object Lifecycle ========= */
@@ -465,7 +492,7 @@ PHP_METHOD(opusChannel, resample)
     }
 
     const opus_int16 *in = (const opus_int16*)ZSTR_VAL(pcm_in);
-    size_t in_samples = ZSTR_LEN(pcm_in) / 2;
+    size_t in_samples = ZSTR_LEN(pcm_in) / (2 * obj->intern->channels);
 
     // Calculate output size with safety margin
     size_t estimated_out = (size_t)(in_samples * ((double)dst_rate / (double)src_rate) * 1.1) + 64;
@@ -488,10 +515,16 @@ PHP_METHOD(opusChannel, resample)
 
         soxr_error_t err;
         soxr_io_spec_t io = soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I);
-        soxr_quality_spec_t q = soxr_quality_spec(SOXR_MQ, SOXR_LOW_LATENCY);
+        soxr_quality_spec_t q = soxr_quality_spec(SOXR_LQ, 0);
+        q.phase_response = 50; /* otimizado para VoIP / baixa latência perceptual */
         soxr_runtime_spec_t r = soxr_runtime_spec(0);
 
-        obj->intern->soxr_state = soxr_create((double)src_rate, (double)dst_rate, 1, &err, &io, &q, &r);
+        obj->intern->soxr_state = soxr_create(
+            (double)src_rate,
+            (double)dst_rate,
+            obj->intern->channels,
+            &err, &io, &q, &r
+        );
         if (err) {
             efree(outbuf);
             zend_throw_error(NULL, "soxr_create failed: %s", err);
@@ -583,23 +616,23 @@ PHP_METHOD(opusChannel, enhanceVoiceClarity)
     size_t num_samples = ZSTR_LEN(pcm_in) / 2;
     opus_int16 *out = emalloc(num_samples * 2);
 
-    // Parâmetros adaptativos baseados na intensidade
-    float gate_threshold = -40.0f + (intensity * 10.0f);
-    float comp_ratio = 2.0f + (intensity * 1.5f);
-    float gain_boost = 1.0f + (intensity * 0.4f);
+    // Parâmetros mais suaves para evitar volume muito baixo
+    float gate_threshold = -50.0f + (intensity * 5.0f);
+    float comp_ratio = 1.5f + (intensity * 0.5f);
+    float gain_boost = 2.0f + (intensity * 1.0f); // Ganho maior
 
     // Use per-instance state instead of static
     float hp_prev = obj->intern->hp_prev;
     float lp_prev = obj->intern->lp_prev;
-    const float hp_alpha = 0.98f;
-    const float lp_alpha = 0.15f;
+    const float hp_alpha = 0.95f; // Menos agressivo
+    const float lp_alpha = 0.25f; // Mais passagem
 
     float envelope = 0.0f;
-    const float attack = 0.001f;
-    const float release = 0.05f;
+    const float attack = 0.01f; // Mais lento
+    const float release = 0.1f; // Mais lento
 
     float comp_env = 0.0f;
-    const float comp_threshold = 0.3f;
+    const float comp_threshold = 0.5f; // Threshold maior
 
     // Zero out output buffer for safety
     memset(out, 0, num_samples * 2);
@@ -607,15 +640,15 @@ PHP_METHOD(opusChannel, enhanceVoiceClarity)
     for (size_t i = 0; i < num_samples; i++) {
         float sample = (float)in[i] / 32768.0f;
 
-        // 1. Filtro High-Pass
+        // 1. Filtro High-Pass (remove DC offset)
         float hp_out = sample - hp_prev;
         hp_prev = hp_prev + (hp_alpha * (sample - hp_prev));
 
-        // 2. Filtro Low-Pass
+        // 2. Filtro Low-Pass (suaviza)
         lp_prev = lp_prev + (lp_alpha * (hp_out - lp_prev));
         float filtered = lp_prev;
 
-        // 3. Gate de Ruído Adaptativo
+        // 3. Gate de Ruído mais suave
         float abs_sample = filtered > 0 ? filtered : -filtered;
         if (abs_sample > envelope) {
             envelope = envelope + (attack * (abs_sample - envelope));
@@ -623,19 +656,26 @@ PHP_METHOD(opusChannel, enhanceVoiceClarity)
             envelope = envelope + (release * (abs_sample - envelope));
         }
 
-        float gate_db = 20.0f * log10f(envelope + 0.0001f);
+        float gate_db = 20.0f * log10f(envelope + 0.00001f);
         float gate_factor = 1.0f;
         if (gate_db < gate_threshold) {
-            gate_factor = 0.1f;
+            // Transição suave ao invés de corte abrupto
+            float gate_range = 20.0f;
+            gate_factor = (gate_db - (gate_threshold - gate_range)) / gate_range;
+            if (gate_factor < 0.0f) gate_factor = 0.0f;
+            if (gate_factor > 1.0f) gate_factor = 1.0f;
         }
         filtered *= gate_factor;
 
-        // 4. Compressor Dinâmico
-        comp_env = comp_env * 0.999f + abs_sample * 0.001f;
+        // 4. Compressor mais suave
+        float current_abs = filtered > 0 ? filtered : -filtered;
+        comp_env = comp_env * 0.99f + current_abs * 0.01f;
         float comp_gain = 1.0f;
         if (comp_env > comp_threshold) {
             comp_gain = comp_threshold + ((comp_env - comp_threshold) / comp_ratio);
-            comp_gain = comp_gain / comp_env;
+            if (comp_env > 0.0001f) {
+                comp_gain = comp_gain / comp_env;
+            }
         }
         filtered *= comp_gain;
 
@@ -643,8 +683,8 @@ PHP_METHOD(opusChannel, enhanceVoiceClarity)
         float output = filtered * gain_boost;
 
         // Saturação suave (soft clipping)
-        if (output > 0.9f) output = 0.9f + 0.1f * tanhf((output - 0.9f) * 10.0f);
-        if (output < -0.9f) output = -0.9f + 0.1f * tanhf((output + 0.9f) * 10.0f);
+        if (output > 0.95f) output = 0.95f + 0.05f * tanhf((output - 0.95f) * 10.0f);
+        if (output < -0.95f) output = -0.95f + 0.05f * tanhf((output + 0.95f) * 10.0f);
 
         // Converter de volta para int16
         out[i] = (opus_int16)(output * 32767.0f);
@@ -767,6 +807,166 @@ PHP_METHOD(opusChannel, spatialStereoEnhance)
     RETURN_STR(result);
 }
 
+/* ========= Método 3: Mono to Stereo (Conversão Mono → Estéreo) ========= */
+PHP_METHOD(opusChannel, monoToStereo)
+{
+    zend_string *pcm_in;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_STR(pcm_in)
+    ZEND_PARSE_PARAMETERS_END();
+
+    opus_channel_object *obj = Z_OPUS_CHANNEL_P(ZEND_THIS);
+    if (!obj->intern) {
+        zend_throw_error(NULL, "OpusChannel not initialized");
+        RETURN_THROWS();
+    }
+
+    if (ZSTR_LEN(pcm_in) == 0) {
+        RETURN_STRINGL("", 0);
+    }
+
+    if (ZSTR_LEN(pcm_in) % 2 != 0) {
+        zend_throw_error(NULL, "Invalid PCM data: must be multiple of 2 bytes");
+        RETURN_THROWS();
+    }
+
+    const opus_int16 *in = (const opus_int16*)ZSTR_VAL(pcm_in);
+    size_t num_samples = ZSTR_LEN(pcm_in) / 2;
+
+    // Aloca buffer de saída estéreo (2 canais)
+    opus_int16 *out = emalloc(num_samples * 2 * 2);
+
+    // Duplica cada amostra mono para L e R
+    for (size_t i = 0; i < num_samples; i++) {
+        out[i * 2] = in[i];     // Left
+        out[i * 2 + 1] = in[i]; // Right
+    }
+
+    zend_string *result = zend_string_init((char*)out, num_samples * 2 * 2, 0);
+    efree(out);
+    RETURN_STR(result);
+}
+
+/* ========= Método 4: Stereo to Mono (Conversão Estéreo → Mono) ========= */
+PHP_METHOD(opusChannel, stereoToMono)
+{
+    zend_string *pcm_in;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_STR(pcm_in)
+    ZEND_PARSE_PARAMETERS_END();
+
+    opus_channel_object *obj = Z_OPUS_CHANNEL_P(ZEND_THIS);
+    if (!obj->intern) {
+        zend_throw_error(NULL, "OpusChannel not initialized");
+        RETURN_THROWS();
+    }
+
+    if (ZSTR_LEN(pcm_in) == 0) {
+        RETURN_STRINGL("", 0);
+    }
+
+    if (ZSTR_LEN(pcm_in) % 4 != 0) {
+        zend_throw_error(NULL, "Invalid stereo PCM data: must be multiple of 4 bytes");
+        RETURN_THROWS();
+    }
+
+    const opus_int16 *in = (const opus_int16*)ZSTR_VAL(pcm_in);
+    size_t num_frames = ZSTR_LEN(pcm_in) / 4; // 2 samples (L+R) * 2 bytes
+
+    // Aloca buffer de saída mono
+    opus_int16 *out = emalloc(num_frames * 2);
+
+    // Mistura L e R com média aritmética
+    for (size_t i = 0; i < num_frames; i++) {
+        int32_t left = in[i * 2];
+        int32_t right = in[i * 2 + 1];
+        out[i] = (opus_int16)((left + right) / 2);
+    }
+
+    zend_string *result = zend_string_init((char*)out, num_frames * 2, 0);
+    efree(out);
+    RETURN_STR(result);
+}
+
+/* ========= Método 5: hasLibsoxr (Verifica se libsoxr está disponível) ========= */
+PHP_METHOD(opusChannel, hasLibsoxr)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+#ifdef HAVE_LIBSOXR
+    RETURN_TRUE;
+#else
+    RETURN_FALSE;
+#endif
+}
+
+/* ========= Método 6: getInfo (Retorna informações da instância) ========= */
+PHP_METHOD(opusChannel, getInfo)
+{
+    ZEND_PARSE_PARAMETERS_NONE();
+
+    opus_channel_object *obj = Z_OPUS_CHANNEL_P(ZEND_THIS);
+    if (!obj->intern) {
+        zend_throw_error(NULL, "OpusChannel not initialized");
+        RETURN_THROWS();
+    }
+
+    array_init(return_value);
+
+    // Informações básicas
+    add_assoc_string(return_value, "extension_version", PHP_OPUS_VERSION);
+    add_assoc_string(return_value, "libopus_version", opus_get_version_string());
+    add_assoc_long(return_value, "sample_rate", obj->intern->sample_rate);
+    add_assoc_long(return_value, "channels", obj->intern->channels);
+
+    // Estado dos codecs
+    add_assoc_bool(return_value, "encoder_initialized", obj->intern->encoder != NULL);
+    add_assoc_bool(return_value, "decoder_initialized", obj->intern->decoder != NULL);
+
+    // Informações do encoder (se disponível)
+    if (obj->intern->encoder) {
+        opus_int32 bitrate, vbr, complexity, dtx, signal;
+
+        opus_encoder_ctl(obj->intern->encoder, OPUS_GET_BITRATE(&bitrate));
+        opus_encoder_ctl(obj->intern->encoder, OPUS_GET_VBR(&vbr));
+        opus_encoder_ctl(obj->intern->encoder, OPUS_GET_COMPLEXITY(&complexity));
+        opus_encoder_ctl(obj->intern->encoder, OPUS_GET_DTX(&dtx));
+        opus_encoder_ctl(obj->intern->encoder, OPUS_GET_SIGNAL(&signal));
+
+        zval encoder_info;
+        array_init(&encoder_info);
+        add_assoc_long(&encoder_info, "bitrate", bitrate);
+        add_assoc_bool(&encoder_info, "vbr", vbr);
+        add_assoc_long(&encoder_info, "complexity", complexity);
+        add_assoc_bool(&encoder_info, "dtx", dtx);
+        add_assoc_string(&encoder_info, "signal", signal == OPUS_SIGNAL_VOICE ? "voice" : "music");
+
+        add_assoc_zval(return_value, "encoder", &encoder_info);
+    }
+
+    // Informações do resampler
+#ifdef HAVE_LIBSOXR
+    add_assoc_bool(return_value, "libsoxr_available", 1);
+    add_assoc_bool(return_value, "soxr_active", obj->intern->soxr_state != NULL);
+
+    if (obj->intern->soxr_state) {
+        zval soxr_info;
+        array_init(&soxr_info);
+        add_assoc_double(&soxr_info, "src_rate", obj->intern->soxr_src_rate);
+        add_assoc_double(&soxr_info, "dst_rate", obj->intern->soxr_dst_rate);
+        add_assoc_zval(return_value, "soxr", &soxr_info);
+    }
+#else
+    add_assoc_bool(return_value, "libsoxr_available", 0);
+    add_assoc_string(return_value, "resampler", "linear_fallback");
+#endif
+
+    // Hora de compilação
+    add_assoc_string(return_value, "compiled", __DATE__ " " __TIME__);
+}
+
 /* ========= Destroy ========= */
 PHP_METHOD(opusChannel, destroy)
 {
@@ -806,6 +1006,10 @@ static const zend_function_entry opus_channel_methods[] = {
     PHP_ME(opusChannel, reset,                arginfo_opus_reset,          ZEND_ACC_PUBLIC)
     PHP_ME(opusChannel, enhanceVoiceClarity,  arginfo_opus_enhance_voice,  ZEND_ACC_PUBLIC)
     PHP_ME(opusChannel, spatialStereoEnhance, arginfo_opus_spatial_stereo, ZEND_ACC_PUBLIC)
+    PHP_ME(opusChannel, monoToStereo,         arginfo_opus_mono_to_stereo, ZEND_ACC_PUBLIC)
+    PHP_ME(opusChannel, stereoToMono,         arginfo_opus_stereo_to_mono, ZEND_ACC_PUBLIC)
+    PHP_ME(opusChannel, hasLibsoxr,           arginfo_opus_has_libsoxr,    ZEND_ACC_PUBLIC)
+    PHP_ME(opusChannel, getInfo,              arginfo_opus_get_info,       ZEND_ACC_PUBLIC)
     PHP_ME(opusChannel, destroy,              arginfo_opus_destroy,        ZEND_ACC_PUBLIC)
     PHP_FE_END
 };
