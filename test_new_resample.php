@@ -26,8 +26,8 @@ if (abs(strlen($resampled) - ($dst_rate * 2 * 2)) > 100) {
     echo "PASSED: Basic resample\n";
 }
 
-// 2. Resample to 8000Hz mono
-$resampled_mono = resample($pcm, $src_rate, 8000, ['channels' => 1]);
+// 2. Resample to 8000Hz mono using output_channels
+$resampled_mono = resample($pcm, $src_rate, 8000, ['output_channels' => 1]);
 echo "Resampled to 8000Hz mono length: " . strlen($resampled_mono) . " bytes (expected approx " . (8000 * 2) . ")\n";
 if (abs(strlen($resampled_mono) - (8000 * 2)) > 100) {
     echo "FAILED: Unexpected mono resampled length\n";
