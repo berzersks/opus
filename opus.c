@@ -1,6 +1,12 @@
 #include "php_opus.h"
 #include "zend_exceptions.h"
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_resample, 0, 3, IS_STRING, 0)
+    ZEND_ARG_TYPE_INFO(0, pcm, IS_STRING, 0)
+    ZEND_ARG_TYPE_INFO(0, src_rate, IS_LONG, 0)
+    ZEND_ARG_TYPE_INFO(0, dst_rate, IS_LONG, 0)
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, options, IS_ARRAY, 0, "[]")
+ZEND_END_ARG_INFO()
 
 
 
@@ -402,7 +408,6 @@ PHP_FUNCTION(resample)
 
 
 
-
 static const zend_function_entry opus_functions[] = {
     PHP_FE(resample, arginfo_resample)
     PHP_FE_END
@@ -453,7 +458,7 @@ zend_module_entry opus_module_entry = {
     NULL,
     NULL,
     PHP_MINFO(opus),
-    "1.1.1",
+    "1.1",
     STANDARD_MODULE_PROPERTIES
 };
 
