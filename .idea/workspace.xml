@@ -19,7 +19,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4dea1af-ba39-40bb-b389-55f78305426c" name="Changes" comment="Add telephony simulation script and update Opus resampling logic to support `output_channels` option">
-      <change beforePath="$PROJECT_DIR$/opus.c" beforeDir="false" afterPath="$PROJECT_DIR$/opus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php_opus.h" beforeDir="false" afterPath="$PROJECT_DIR$/php_opus.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767421415576</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add telephony simulation script and update Opus resampling logic to support `output_channels` option">
+      <option name="closed" value="true" />
+      <created>1767421447796</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1767421447796</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -11,7 +11,7 @@
 extern zend_module_entry opus_module_entry;
 #define phpext_opus_ptr &opus_module_entry
 
-#define PHP_OPUS_VERSION "1.1"
+#define PHP_OPUS_VERSION "1.1.1"
 
 
 
