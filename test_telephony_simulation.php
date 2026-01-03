@@ -5,7 +5,7 @@
  * Lê um arquivo WAV, processa frame a frame e converte frequências
  */
 
-$wav_file = '/home/lotus/PROJETOS/opus/audio_48000_stereo.wav';
+$wav_file = '/home/lotus/PROJETOS/pcg729/audio_48000_stereo.wav';
 if (!file_exists($wav_file)) {
     $wav_file = '/home/lotus/PROJETOS/opus/result_48000_stereo.wav';
 }

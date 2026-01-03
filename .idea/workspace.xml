@@ -19,7 +19,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4dea1af-ba39-40bb-b389-55f78305426c" name="Changes" comment="Add telephony simulation script and update Opus resampling logic to support `output_channels` option">
-      <change beforePath="$PROJECT_DIR$/opus.c" beforeDir="false" afterPath="$PROJECT_DIR$/opus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telephony_test_results/cd_quality_stereo.wav" beforeDir="false" afterPath="$PROJECT_DIR$/telephony_test_results/cd_quality_stereo.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telephony_test_results/narrowband_mono__g_711_style_.wav" beforeDir="false" afterPath="$PROJECT_DIR$/telephony_test_results/narrowband_mono__g_711_style_.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telephony_test_results/ultra-wideband_stereo.wav" beforeDir="false" afterPath="$PROJECT_DIR$/telephony_test_results/ultra-wideband_stereo.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telephony_test_results/wideband_mono__g_722_style_.wav" beforeDir="false" afterPath="$PROJECT_DIR$/telephony_test_results/wideband_mono__g_722_style_.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_telephony_simulation.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_telephony_simulation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767420917166</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add telephony simulation script and update Opus resampling logic to support `output_channels` option">
+      <option name="closed" value="true" />
+      <created>1767421176333</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1767421176333</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
