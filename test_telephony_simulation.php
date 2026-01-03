@@ -81,3 +81,4 @@ foreach ($scenarios as $scenario) {
 }
 
 echo "\nSimulação finalizada.\n";
+var_dump((new opusChannel(48000,1))->getInfo());
