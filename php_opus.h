@@ -57,6 +57,8 @@ PHP_METHOD(opusChannel, stereoToMono);
 PHP_METHOD(opusChannel, hasLibsoxr);
 PHP_METHOD(opusChannel, getInfo);
 
+ZEND_FUNCTION(resample);
+
 void register_opus_channel_class(void);
 void opus_channel_free_storage(zend_object *object);
 
