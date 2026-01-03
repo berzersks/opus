@@ -47,6 +47,9 @@ PHP_FUNCTION(resample)
         if ((val = zend_hash_str_find(Z_ARRVAL_P(options), "channels", sizeof("channels") - 1)) != NULL) {
             out_channels = (int)zval_get_long(val);
         }
+        if ((val = zend_hash_str_find(Z_ARRVAL_P(options), "output_channels", sizeof("output_channels") - 1)) != NULL) {
+            out_channels = (int)zval_get_long(val);
+        }
         if ((val = zend_hash_str_find(Z_ARRVAL_P(options), "gain", sizeof("gain") - 1)) != NULL) {
             gain = zval_get_double(val);
         }
