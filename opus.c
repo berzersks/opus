@@ -458,7 +458,7 @@ zend_module_entry opus_module_entry = {
     NULL,
     NULL,
     PHP_MINFO(opus),
-    "1.1",
+    "1.1.1",
     STANDARD_MODULE_PROPERTIES
 };
 
