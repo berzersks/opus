@@ -64,7 +64,7 @@ static soxr_t soxr_get_cached(
         }
     }
 
-    // 2) acha slot vazio ou reaproveita o 0
+
     int idx = -1;
     for (int i = 0; i < SOXR_CACHE_SLOTS; i++) {
         if (!g_soxr_cache[i].in_use) { idx = i; break; }
