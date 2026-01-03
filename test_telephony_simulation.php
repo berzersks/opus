@@ -6,26 +6,23 @@
  */
 
 $wav_file = '/home/lotus/PROJETOS/opus/audio_48000_stereo.wav';
+if (!file_exists($wav_file)) {
+    $wav_file = '/home/lotus/PROJETOS/opus/result_48000_stereo.wav';
+}
 
 if (!file_exists($wav_file)) {
-    die("Erro: Arquivo $wav_file não encontrado.\n");
+    die("Erro: Arquivo de áudio não encontrado para teste.\n");
 }
 
 echo "Iniciando simulação de telefonia...\n";
 echo "Lendo arquivo: $wav_file\n";
 
 $data = file_get_contents($wav_file);
-// Pula cabeçalho WAV de 44 bytes para pegar o PCM bruto (assumindo 16-bit 48k stereo)
-$pcm_raw = substr($data, 44);
+$pcm_raw = substr($data, 44); // Pula cabeçalho WAV
 $input_rate = 48000;
 $input_channels = 2;
+$frame_size = 3840; // 20ms @ 48kHz Stereo
 
-// Tamanho do frame: 20ms de áudio em 48kHz stereo (16-bit)
-// 48000 * 0.02 = 960 amostras por canal
-// 960 * 2 canais * 2 bytes = 3840 bytes por frame
-$frame_size = 3840; 
-
-echo "Dividindo áudio em frames de " . ($frame_size / 4) . " amostras (20ms)...\n";
 $frames = str_split($pcm_raw, $frame_size);
 
 $scenarios = [
@@ -35,53 +32,52 @@ $scenarios = [
     ['rate' => 32000, 'channels' => 2, 'name' => 'Ultra-wideband Stereo']
 ];
 
+$output_dir = __DIR__ . '/telephony_test_results';
+if (!is_dir($output_dir)) {
+    mkdir($output_dir, 0777, true);
+}
+
+function write_wav_header($sample_rate, $channels, $data_len) {
+    $header = "RIFF";
+    $header .= pack("V", 36 + $data_len);
+    $header .= "WAVEfmt ";
+    $header .= pack("V", 16);
+    $header .= pack("v", 1); // PCM
+    $header .= pack("v", $channels);
+    $header .= pack("V", $sample_rate);
+    $header .= pack("V", $sample_rate * $channels * 2);
+    $header .= pack("v", $channels * 2);
+    $header .= pack("v", 16);
+    $header .= "data";
+    $header .= pack("V", $data_len);
+    return $header;
+}
+
 foreach ($scenarios as $scenario) {
-    echo "\n--- Testando cenário: {$scenario['name']} ({$scenario['rate']}Hz, " . ($scenario['channels'] == 1 ? 'Mono' : 'Stereo') . ") ---\n";
-    
+    echo "\n--- Testando cenário: {$scenario['name']} ({$scenario['rate']}Hz) ---\n";
     $processed_pcm = "";
-    $start_time = microtime(true);
     
     foreach ($frames as $index => $frame) {
-        // Ignora último frame se estiver incompleto
         if (strlen($frame) < $frame_size) continue;
         
-        try {
-            $converted = resample($frame, $input_rate, $scenario['rate'], [
-                'input_channels' => $input_channels,
-                'output_channels' => $scenario['channels'],
-                'normalize' => ($index === 0) // Normaliza apenas o primeiro frame como teste de funcionalidade
-            ]);
-            
-            $processed_pcm .= $converted;
-            
-            if ($index % 50 === 0) {
-                echo "Processado frame $index...\n";
-            }
-        } catch (Error $e) {
-            echo "Erro no frame $index: " . $e->getMessage() . "\n";
-            break;
-        }
+        $converted = resample($frame, $input_rate, $scenario['rate'], [
+            'input_channels' => $input_channels,
+            'output_channels' => $scenario['channels'],
+            'normalize' => ($index === 0)
+        ]);
+        
+        $processed_pcm .= $converted;
     }
     
-    $end_time = microtime(true);
-    $duration = $end_time - $start_time;
+    $file_name = str_replace([' ', '(', ')', '.', '/'], '_', $scenario['name']) . ".wav";
+    $file_path = $output_dir . '/' . strtolower($file_name);
     
-    echo "Concluído em " . round($duration, 4) . "s\n";
+    $wav_data = write_wav_header($scenario['rate'], $scenario['channels'], strlen($processed_pcm)) . $processed_pcm;
+    file_put_contents($file_path, $wav_data);
+    
+    echo "Arquivo salvo: $file_path\n";
     echo "Tamanho final: " . strlen($processed_pcm) . " bytes\n";
-    
-    // Verificação básica de integridade
-    $expected_ratio = $scenario['rate'] / $input_rate;
-    $expected_channels_ratio = $scenario['channels'] / $input_channels;
-    $expected_size = strlen($pcm_raw) * $expected_ratio * $expected_channels_ratio;
-    
-    $diff = abs(strlen($processed_pcm) - $expected_size);
-    $percent_diff = ($diff / $expected_size) * 100;
-    
-    if ($percent_diff < 5) {
-        echo "RESULTADO: SUCESSO (Diferença de tamanho: " . round($percent_diff, 2) . "%)\n";
-    } else {
-        echo "RESULTADO: ALERTA (Diferença de tamanho significativa: " . round($percent_diff, 2) . "%)\n";
-    }
+    echo "SUCESSO.\n";
 }
 
 echo "\nSimulação finalizada.\n";

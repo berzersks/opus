@@ -1,0 +1,430 @@
+/home/lotus/PROJETOS/opus/result_48000_stereo.wav
+/home/lotus/PROJETOS/libspech/extra/assets/music.wav
+/home/lotus/PROJETOS/libspech/music.wav
+/home/lotus/PROJETOS/libspech/rec.wav
+/home/lotus/PROJETOS/libspech/l16.wav
+/home/lotus/PROJETOS/libspech/music_back.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/recordings/a792eb3f0d5849ad9077a80c6315daee-mixed.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/safra/87665751687.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/safra/02820194648.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/espere.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/ivr/espere.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/xxx/x/manage/ivr/makita.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/82023735149.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/32357036320.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/13537239688.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/05202692684.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/45556288291.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/72173718720.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/85446815734.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/09870553648.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/02686472324.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/35205171839.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/25149853828.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/70530496470.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/09155587771.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/24992984720.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/81351119249.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/09933333704.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/30497323850.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/47795859372.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/68663641249.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/45437238568.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/54029538720.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/80525830553.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/06131532435.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/13935961693.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11699216630.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/27277837878.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/42328672876.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/28208471534.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/18560546839.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/77298438700.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/47615354072.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/31466259892.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11613747446.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/78075173520.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/35827884820.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/21870162854.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/00879396490.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/01792805624.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/26752379220.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/81082410810.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11922047430.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/42767524855.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/82929696168.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11561184411.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/78695392953.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/60094575800.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/60143711504.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/81303793768.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/59427574704.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/58503579120.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/73411191368.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/14566493709.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/79384030830.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/26151944704.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/05921042498.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/07868140470.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/42939053839.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/23355115991.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/85270601168.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11810495636.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/74480790691.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/49604970763.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/55765300200.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/34591028704.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/25475708827.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/13104839735.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/86098586500.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/34830386800.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/11756111740.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/73857769734.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/35252256870.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/76739325391.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/45994501468.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/34379541720.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/32306644004.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/83562540787.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/05863822406.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/28718825842.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/70455651604.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/26704888896.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/71221735691.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/30314394818.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/12679137892.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/31268323187.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/08751484412.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/09905102639.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/41713392860.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/76668487653.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/83384057600.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/05287868499.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/61538850206.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/74916203615.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/Transcripts Fails/54803594520.wav
+/home/lotus/PROJETOS/backup makita 25out02:17/spechshop/x/safra/85446815734.wav
+/home/lotus/PROJETOS/pcg729/mixed_from_pcma.pcm
+/home/lotus/PROJETOS/pcg729/03_resampled_8k.wav
+/home/lotus/PROJETOS/pcg729/source/php-src/ext/opus/audio_48000_stereo.wav
+/home/lotus/PROJETOS/pcg729/result_normalized.wav
+/home/lotus/PROJETOS/pcg729/05_enhanced_48k.wav
+/home/lotus/PROJETOS/pcg729/mixed.pcm
+/home/lotus/PROJETOS/pcg729/result_48000_stereo.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/pipeline_full_48k_stereo.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/original_8k_mono.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/voice_clarity_48k_mono.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/spatial_48k_stereo.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/resample_48k_mono.wav
+/home/lotus/PROJETOS/pcg729/comparativo_audio/voice_clarity_8k_mono.wav
+/home/lotus/PROJETOS/pcg729/pipeline_result.pcm
+/home/lotus/PROJETOS/pcg729/result_gain_0.5.wav
+/home/lotus/PROJETOS/pcg729/01_input_48k.wav
+/home/lotus/PROJETOS/pcg729/mixed_3channels.pcm
+/home/lotus/PROJETOS/pcg729/result_reverse.wav
+/home/lotus/PROJETOS/pcg729/music.wav
+/home/lotus/PROJETOS/pcg729/result_8000_mono.wav
+/home/lotus/PROJETOS/pcg729/02_opus_roundtrip_48k.wav
+/home/lotus/PROJETOS/pcg729/downloads/opus/audio_48000_stereo.wav
+/home/lotus/PROJETOS/pcg729/result_48000_l16.wav
+/home/lotus/PROJETOS/pcg729/04_resample_roundtrip_48k.wav
+/home/lotus/PROJETOS/pcg729/mixed_from_pcmu.pcm
+/home/lotus/PROJETOS/pcg729/48000.pcm
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11604160799.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11699216630.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11692904698.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11679418459.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11613747446.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11702210766.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11694809854.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11688314660.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11701608758.wav
+/home/lotus/PROJETOS/autodial/xxxxx/safra/11637657676.wav
+/home/lotus/PROJETOS/spechphone/libspech/extra/assets/music.wav
+/home/lotus/PROJETOS/spechphone/libspech/music.wav
+/home/lotus/PROJETOS/spechphone/rec.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/recordings/a792eb3f0d5849ad9077a80c6315daee-mixed.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/mixed.pcm
+/home/lotus/PROJETOS/backup spechshop/31out1243/safra/87665751687.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/safra/02820194648.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/espere.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/ivr/espere.wav
+/home/lotus/PROJETOS/backup spechshop/31out1243/manage/ivr/makita.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/recordings/a792eb3f0d5849ad9077a80c6315daee-mixed.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/mixed.pcm
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/safra/87665751687.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/safra/02820194648.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/espere.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/ivr/espere.wav
+/home/lotus/PROJETOS/backup spechshop/30OUT1003/manage/ivr/makita.wav
+/home/lotus/PROJETOS/backup spechshop/x/recordings/a792eb3f0d5849ad9077a80c6315daee-mixed.wav
+/home/lotus/PROJETOS/backup spechshop/x/mixed.pcm
+/home/lotus/PROJETOS/backup spechshop/x/safra/87665751687.wav
+/home/lotus/PROJETOS/backup spechshop/x/safra/02820194648.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/espere.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/ivr/espere.wav
+/home/lotus/PROJETOS/backup spechshop/x/manage/ivr/makita.wav
+/home/lotus/PROJETOS/grandsip/libspech/audio.wav
+/home/lotus/PROJETOS/grandsip/libspech/music.wav
+/home/lotus/PROJETOS/spechshop/libspech/extra/assets/music.wav
+/home/lotus/PROJETOS/spechshop/libspech/music.wav
+/home/lotus/PROJETOS/spechshop/mixed.pcm
+/home/lotus/PROJETOS/spechshop/spechphone/rec.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/MERCADO-LIVRE-NOVO.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/NUBANK_998_REAIS.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/espere.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/spechshop/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/spechshop/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/spechshop/manage/ivr/espere.wav
+/home/lotus/PROJETOS/spechshop/manage/ivr/makita.wav
+/home/lotus/PROJETOS/lipc/libspech/audio.wav
+/home/lotus/PROJETOS/lipc/libspech/music.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/soundstar.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound8.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/autoanswer.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/busy.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/error.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound9.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sounda.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound1.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound0.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/notfound.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound5.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound2.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound4.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound3.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/soundc.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/ringback.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound6.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/message.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/soundroute.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/ring.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/soundb.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/soundd.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/sound7.wav
+/home/lotus/PROJETOS/baresip/baresip-4.2.0/share/callwaiting.wav
+/home/lotus/PROJETOS/baresip/re-4.2.0/test/data/beep.wav
+/home/lotus/PROJETOS/MAKITA2/recordings/a0440288b9c24038aa7cd297f35e6b9a-mixed.wav
+/home/lotus/PROJETOS/MAKITA2/safra/88413586615.wav
+/home/lotus/PROJETOS/MAKITA2/safra/26023296653.wav
+/home/lotus/PROJETOS/MAKITA2/safra/72673451668.wav
+/home/lotus/PROJETOS/MAKITA2/safra/00199881685.wav
+/home/lotus/PROJETOS/MAKITA2/safra/12721481819.wav
+/home/lotus/PROJETOS/MAKITA2/safra/29320330697.wav
+/home/lotus/PROJETOS/MAKITA2/safra/03731702622.wav
+/home/lotus/PROJETOS/MAKITA2/safra/01084760819.wav
+/home/lotus/PROJETOS/MAKITA2/safra/77517954687.wav
+/home/lotus/PROJETOS/MAKITA2/safra/40339840625.wav
+/home/lotus/PROJETOS/MAKITA2/safra/03035366675.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/espere.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/MAKITA2/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/MAKITA2/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/MAKITA2/manage/ivr/espere.wav
+/home/lotus/PROJETOS/MAKITA2/manage/ivr/makita.wav
+/home/lotus/PROJETOS/MAKITA/recordings/a792eb3f0d5849ad9077a80c6315daee-mixed.wav
+/home/lotus/PROJETOS/MAKITA/safra/87665751687.wav
+/home/lotus/PROJETOS/MAKITA/safra/02820194648.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/audio-jhow_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/mulher-gaga-e-fanha.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/5.-Kant-Spinardi-Nefarius-nrdc50_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/digite_seu_cpf.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5_(1).wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/tts_audio_9_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/cm98l5rxvid3r10zg6je0lzvz.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/desgraca-fanha.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/Killshot_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/1449_casas_bahia_nubank_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/espere.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/makitaa-made-with-Voicemod_converted.wav
+/home/lotus/PROJETOS/MAKITA/manage/sounds/cm8hh4qhwj04nj1oshaqw6mu5.wav
+/home/lotus/PROJETOS/MAKITA/manage/ivr/Killshot.wav
+/home/lotus/PROJETOS/MAKITA/manage/ivr/espere.wav
+/home/lotus/PROJETOS/MAKITA/manage/ivr/makita.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/opus/music_spatial_48k_stereo.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/opus/music_pipeline_48k_stereo.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/opus/music_voice_48k_mono.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/opus/music_dry_48k_mono.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/codecs/music_pcm8_from_pcma.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/codecs/music_pcm8_from_pcmu.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/codecs/music_pcm8_original.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/resample/music_mono_48000.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/resample/music_mono_8000.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/resample/music_mono_24000.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/resample/music_mono_16000.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/mixing/music_dry_48k.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/mixing/music_mix3_offsets_8k.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/out/mixing/music_echo_48k.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/extra/assets/music.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/music.wav
+/home/lotus/PROJETOS/spechphone2/teste2/libspech/rec.wav
+/home/lotus/PROJETOS/spechphone2/teste2/rec.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/13032601665.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/07844478888.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/00893617687.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11243262788.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/88358607172.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/09751154804.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/07488068815.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/80941206068.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/09933333704.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/05623158706.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/08693288750.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11699216630.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11980047626.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11023700611.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11863094660.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11702210766.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/81273541049.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/12341584420.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/06019406873.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/04412715965.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/12056583780.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/09902620493.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/03044126436.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11570838623.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/13504456655.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/05353814177.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/01603631100.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/13463408708.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/12041118717.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/80750761504.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/05151595652.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/12024131450.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/00494035161.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/12323211765.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11756111740.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/16742222204.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11688314660.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11701608758.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/05863822406.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11882653424.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/11876232617.wav
+/home/lotus/PROJETOS/spechphone2/Transcripts Fails/80811299015.wav
+/home/lotus/PROJETOS/spechphone2/safra/13537239688.wav
+/home/lotus/PROJETOS/spechphone2/safra/11243262788.wav
+/home/lotus/PROJETOS/spechphone2/safra/10922433640.wav
+/home/lotus/PROJETOS/spechphone2/safra/11604160799.wav
+/home/lotus/PROJETOS/spechphone2/safra/11752928423.wav
+/home/lotus/PROJETOS/spechphone2/safra/13390317368.wav
+/home/lotus/PROJETOS/spechphone2/safra/11613747446.wav
+/home/lotus/PROJETOS/spechphone2/safra/11847987702.wav
+/home/lotus/PROJETOS/spechphone2/safra/13109326620.wav
+/home/lotus/PROJETOS/spechphone2/safra/11725939738.wav
+/home/lotus/PROJETOS/spechphone2/safra/10291143660.wav
+/home/lotus/PROJETOS/spechphone2/safra/11561184411.wav
+/home/lotus/PROJETOS/spechphone2/safra/11570838623.wav
+/home/lotus/PROJETOS/spechphone2/safra/11810495636.wav
+/home/lotus/PROJETOS/spechphone2/safra/13463408708.wav
+/home/lotus/PROJETOS/spechphone2/safra/11694809854.wav
+/home/lotus/PROJETOS/spechphone2/safra/11811357709.wav
+/home/lotus/PROJETOS/spechphone2/safra/13104839735.wav
+/home/lotus/PROJETOS/spechphone2/safra/11688314660.wav
+/home/lotus/PROJETOS/spechphone2/safra/11637657676.wav
+/home/lotus/PROJETOS/spechphone2/safra/10818294191.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/09751154804.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/09933333704.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/11980047626.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/11863094660.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/11613747446.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/09175520672.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/12056583780.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/09902620493.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/11561184411.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/12041118717.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/09451038400.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/12323211765.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/16742222204.wav
+/home/lotus/PROJETOS/spechphone2/teste/Transcripts Fails/11827849762.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09870553648.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09751154804.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09933333704.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11980047626.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09638565616.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11847987702.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09175520672.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/08922820454.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11570838623.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11944734406.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09868032784.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09633009898.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/09814380679.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11810495636.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/12041118717.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/12024131450.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/12222479681.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11756111740.wav
+/home/lotus/PROJETOS/spechphone2/teste/safra/11882653424.wav

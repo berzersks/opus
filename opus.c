@@ -78,17 +78,27 @@ PHP_FUNCTION(resample)
     // Safety margin for resampling
     size_t alloc_samples = (size_t)(out_samples * 1.05) + 128;
     opus_int16 *in_buf = (opus_int16 *)ZSTR_VAL(pcm_in);
-    opus_int16 *out_buf = (opus_int16 *)emalloc(alloc_samples * out_channels * sizeof(opus_int16));
+    
+    // Alocar buffer grande o suficiente para o maior número de canais entre entrada e saída
+    int max_channels = in_channels > out_channels ? in_channels : out_channels;
+    opus_int16 *out_buf = (opus_int16 *)emalloc(alloc_samples * max_channels * sizeof(opus_int16));
 
     size_t actual_out_samples = 0;
 
 #ifdef HAVE_LIBSOXR
     size_t idone, odone;
     soxr_io_spec_t io = soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I);
-    soxr_error_t err = soxr_oneshot(src_rate, dst_rate, in_channels == out_channels ? in_channels : (in_channels > out_channels ? in_channels : out_channels),
+    soxr_quality_spec_t q_spec = soxr_quality_spec(SOXR_HQ, 0);
+    
+    // Se mudarmos o número de canais, o soxr_oneshot lida com os canais fornecidos.
+    // No entanto, para garantir a melhor qualidade na redução de estéreo para mono, 
+    // é melhor fazermos a mixagem manualmente se necessário, ou garantir que o soxr saiba o que está fazendo.
+    // A implementação atual do oneshot do soxr para múltiplos canais espera dados intercalados.
+    
+    soxr_error_t err = soxr_oneshot(src_rate, dst_rate, in_channels,
                                     in_buf, in_samples, &idone,
                                     out_buf, alloc_samples, &odone,
-                                    &io, NULL, NULL);
+                                    &io, &q_spec, NULL);
     
     if (err) {
         efree(out_buf);
@@ -96,6 +106,24 @@ PHP_FUNCTION(resample)
         RETURN_THROWS();
     }
     actual_out_samples = odone;
+
+    // Se o soxr processou in_channels mas queremos out_channels diferente
+    if (in_channels != out_channels) {
+        if (in_channels == 2 && out_channels == 1) {
+            // Downmix de Stereo para Mono (no buffer de saída)
+            for (size_t i = 0; i < actual_out_samples; i++) {
+                int32_t mix = (int32_t)out_buf[i * 2] + (int32_t)out_buf[i * 2 + 1];
+                out_buf[i] = (opus_int16)(mix / 2);
+            }
+        } else if (in_channels == 1 && out_channels == 2) {
+            // Upmix de Mono para Stereo (precisamos percorrer de trás para frente para não sobrescrever)
+            for (size_t i = actual_out_samples; i > 0; i--) {
+                size_t idx = i - 1;
+                out_buf[idx * 2] = out_buf[idx];
+                out_buf[idx * 2 + 1] = out_buf[idx];
+            }
+        }
+    }
 #else
     // Linear interpolation fallback (simplified, assumes same channel count for simplicity in fallback)
     double ratio = (double)dst_rate / (double)src_rate;

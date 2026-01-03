@@ -19,9 +19,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4dea1af-ba39-40bb-b389-55f78305426c" name="Changes" comment="Remove obsolete generated files related to Opus extension build process">
+      <change afterPath="$PROJECT_DIR$/.output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opus.c" beforeDir="false" afterPath="$PROJECT_DIR$/opus.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_new_resample.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_new_resample.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_new_resample.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_telephony_simulation.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_telephony_simulation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="soxr" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,7 +86,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "soxr",
+    "git-widget-placeholder": "develop",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/home/lotus/PROJETOS/opus",
     "node.js.detected.package.eslint": "true",
@@ -106,8 +107,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/build" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
