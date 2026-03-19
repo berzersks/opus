@@ -272,6 +272,7 @@ try {
         $decoded = $opus->decode($encoded);
         $enhanced = $opus->enhanceVoiceClarity($decoded);
         $resampled = $opus->resample($enhanced, 48000, 8000);
+        $opus->reset();
     }
 
     $opus->destroy();
