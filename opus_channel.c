@@ -1,5 +1,6 @@
 #include "php_opus.h"
 #include "soxr.h"
+#include "zend_smart_string.h"
 
 /* Fallback para versões do soxr sem SOXR_LOW_LATENCY */
 #ifndef SOXR_LOW_LATENCY
@@ -8,9 +9,11 @@
 
 #include <math.h>
 
-#ifndef SOXR_LOW_LATENCY
-#define SOXR_LOW_LATENCY 0
-#endif
+/* ========= Helper: Get best frame size ========= */
+static inline int opus_get_best_frame_size(int sample_rate) {
+    // Retorna 20ms (padrão recomendado) em samples
+    return (int)(sample_rate * 0.020);
+}
 
 
 
@@ -351,7 +354,7 @@ PHP_METHOD(opusChannel, reset)
 PHP_METHOD(opusChannel, encode)
 {
     zend_string *pcm_in;
-    zend_long pcm_rate = 48000;
+    zend_long pcm_rate = 0;
     int nbBytes;
 
     ZEND_PARSE_PARAMETERS_START(1, 2)
@@ -366,10 +369,8 @@ PHP_METHOD(opusChannel, encode)
         RETURN_THROWS();
     }
 
-    // Validate input size
     if (ZSTR_LEN(pcm_in) == 0) {
-        zend_throw_error(NULL, "Empty PCM data");
-        RETURN_THROWS();
+        RETURN_STRINGL("", 0);
     }
 
     if (ZSTR_LEN(pcm_in) % (2 * obj->intern->channels) != 0) {
@@ -377,48 +378,102 @@ PHP_METHOD(opusChannel, encode)
         RETURN_THROWS();
     }
 
-    const opus_int16 *in = (const opus_int16*)ZSTR_VAL(pcm_in);
-    int in_samples = ZSTR_LEN(pcm_in) / (2 * obj->intern->channels);
+    const opus_int16 *input_pcm = (const opus_int16*)ZSTR_VAL(pcm_in);
+    int total_samples = ZSTR_LEN(pcm_in) / (2 * obj->intern->channels);
 
-    // Initialize frame duration and samples for validation
-    double frame_durations[] = {0.0025, 0.005, 0.010, 0.020, 0.040, 0.060, 0.080, 0.100, 0.120};
-    int is_valid = 0;
-    int i_dur;
+    // Handle resampling if needed
+    opus_int16 *work_pcm = NULL;
+    int work_samples = total_samples;
 
-    for (i_dur = 0; i_dur < 9; i_dur++) {
-        int expected_samples = (int)(obj->intern->sample_rate * frame_durations[i_dur]);
-        if (in_samples == expected_samples) {
-            is_valid = 1;
-            break;
+    if (pcm_rate > 0 && pcm_rate != obj->intern->sample_rate) {
+#ifdef HAVE_LIBSOXR
+        size_t idone, odone;
+        work_samples = (int)((double)total_samples * obj->intern->sample_rate / pcm_rate) + 128;
+        work_pcm = (opus_int16*)emalloc(work_samples * obj->intern->channels * sizeof(opus_int16));
+
+        soxr_io_spec_t io = soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I);
+        soxr_quality_spec_t q_spec = soxr_quality_spec(SOXR_HQ, 0);
+
+        soxr_error_t err = soxr_oneshot(pcm_rate, obj->intern->sample_rate, obj->intern->channels,
+                                        input_pcm, total_samples, &idone,
+                                        work_pcm, work_samples, &odone,
+                                        &io, &q_spec, NULL);
+
+        if (err) {
+            efree(work_pcm);
+            zend_throw_error(NULL, "Resampling failed: %s", err);
+            RETURN_THROWS();
         }
-    }
-
-    if (!is_valid) {
-        zend_throw_error(NULL, "Invalid frame size: %d samples. Must be 2.5, 5, 10, 20, 40, 60, 80, 100, or 120ms worth of samples at %dHz",
-                        in_samples, obj->intern->sample_rate);
+        work_samples = (int)odone;
+        input_pcm = work_pcm;
+#else
+        zend_throw_error(NULL, "Resampling not available (libsoxr required)");
         RETURN_THROWS();
+#endif
     }
 
-    // Allocate output buffer (max opus frame size is ~4000 bytes)
-    unsigned char *out = emalloc(4000);
+    // Calculate optimal frame size (20ms)
+    int frame_size = opus_get_best_frame_size(obj->intern->sample_rate);
+    int num_frames = (work_samples + frame_size - 1) / frame_size;
 
-    nbBytes = opus_encode(obj->intern->encoder, in, in_samples, out, 4000);
-    if (nbBytes < 0) {
-        efree(out);
-        zend_throw_error(NULL, "Opus encode failed: %s", opus_strerror(nbBytes));
-        RETURN_THROWS();
+    // Prepare output buffer using smart_string
+    smart_string result = {0};
+    smart_string_alloc(&result, num_frames * 4100, 0);
+
+    // Allocate temp buffers
+    opus_int16 *frame_buf = (opus_int16*)emalloc(frame_size * obj->intern->channels * sizeof(opus_int16));
+    unsigned char *opus_buf = (unsigned char*)emalloc(4000);
+
+    // Encode each frame
+    for (int i = 0; i < num_frames; i++) {
+        int offset = i * frame_size;
+        int samples_available = work_samples - offset;
+        int samples_to_encode = samples_available >= frame_size ? frame_size : samples_available;
+
+        // Copy frame data
+        memcpy(frame_buf, &input_pcm[offset * obj->intern->channels],
+               samples_to_encode * obj->intern->channels * sizeof(opus_int16));
+
+        // Pad with zeros if incomplete frame
+        if (samples_to_encode < frame_size) {
+            memset(&frame_buf[samples_to_encode * obj->intern->channels], 0,
+                   (frame_size - samples_to_encode) * obj->intern->channels * sizeof(opus_int16));
+        }
+
+        // Encode frame
+        nbBytes = opus_encode(obj->intern->encoder, frame_buf, frame_size, opus_buf, 4000);
+
+        if (nbBytes < 0) {
+            efree(frame_buf);
+            efree(opus_buf);
+            if (work_pcm) efree(work_pcm);
+            smart_string_free(&result);
+            zend_throw_error(NULL, "Opus encode failed: %s", opus_strerror(nbBytes));
+            RETURN_THROWS();
+        }
+
+        // Write frame size (2 bytes, little-endian) + frame data
+        uint16_t frame_len = (uint16_t)nbBytes;
+        smart_string_appendl(&result, (char*)&frame_len, 2);
+        smart_string_appendl(&result, (char*)opus_buf, nbBytes);
     }
 
-    zend_string *result = zend_string_init((char*)out, nbBytes, 0);
-    efree(out);
-    RETURN_STR(result);
+    efree(frame_buf);
+    efree(opus_buf);
+    if (work_pcm) efree(work_pcm);
+
+    smart_string_0(&result);
+    zend_string *ret = zend_string_init(result.c, result.len, 0);
+    smart_string_free(&result);
+
+    RETURN_STR(ret);
 }
 
 PHP_METHOD(opusChannel, decode)
 {
     zend_string *opus_in;
-    zend_long pcm_rate_out = 48000;
-    int frame_size, ret;
+    zend_long pcm_rate_out = 0;
+    int ret;
 
     ZEND_PARSE_PARAMETERS_START(1, 2)
         Z_PARAM_STR(opus_in)
@@ -432,32 +487,96 @@ PHP_METHOD(opusChannel, decode)
         RETURN_THROWS();
     }
 
-    // Validate input
     if (ZSTR_LEN(opus_in) == 0) {
-        zend_throw_error(NULL, "Empty Opus data");
-        RETURN_THROWS();
+        RETURN_STRINGL("", 0);
     }
 
-    if (ZSTR_LEN(opus_in) > 4000) {
-        zend_throw_error(NULL, "Opus data too large (max 4000 bytes)");
-        RETURN_THROWS();
-    }
+    // Parse multiple frames (format: 2-byte size + frame data)
+    const unsigned char *data = (const unsigned char*)ZSTR_VAL(opus_in);
+    size_t data_len = ZSTR_LEN(opus_in);
+    size_t pos = 0;
 
     // Maximum frame size is 5760 samples (120ms at 48kHz)
-    frame_size = 5760;
-    opus_int16 *pcm_out = emalloc(frame_size * obj->intern->channels * 2);
+    int max_frame_size = 5760;
 
-    ret = opus_decode(obj->intern->decoder, (const unsigned char*)ZSTR_VAL(opus_in),
-                      ZSTR_LEN(opus_in), pcm_out, frame_size, 0);
-    if (ret < 0) {
-        efree(pcm_out);
-        zend_throw_error(NULL, "Opus decode failed: %s", opus_strerror(ret));
-        RETURN_THROWS();
+    // Prepare output buffer using smart_string
+    smart_string result = {0};
+    smart_string_alloc(&result, data_len * 60, 0); // Estimate: compressed to PCM expansion
+
+    opus_int16 *frame_pcm = (opus_int16*)emalloc(max_frame_size * obj->intern->channels * sizeof(opus_int16));
+
+    // Decode all frames
+    while (pos + 2 <= data_len) {
+        // Read frame size (2 bytes, little-endian)
+        uint16_t frame_len = data[pos] | (data[pos + 1] << 8);
+        pos += 2;
+
+        if (pos + frame_len > data_len) {
+            efree(frame_pcm);
+            smart_string_free(&result);
+            zend_throw_error(NULL, "Invalid Opus frame: incomplete data");
+            RETURN_THROWS();
+        }
+
+        // Decode frame
+        ret = opus_decode(obj->intern->decoder, &data[pos], frame_len,
+                         frame_pcm, max_frame_size, 0);
+
+        if (ret < 0) {
+            efree(frame_pcm);
+            smart_string_free(&result);
+            zend_throw_error(NULL, "Opus decode failed: %s", opus_strerror(ret));
+            RETURN_THROWS();
+        }
+
+        // Append decoded PCM to result
+        smart_string_appendl(&result, (char*)frame_pcm, ret * obj->intern->channels * sizeof(opus_int16));
+
+        pos += frame_len;
     }
 
-    zend_string *result = zend_string_init((char*)pcm_out, ret * obj->intern->channels * 2, 0);
-    efree(pcm_out);
-    RETURN_STR(result);
+    efree(frame_pcm);
+
+    // Handle resampling if needed
+    if (pcm_rate_out > 0 && pcm_rate_out != obj->intern->sample_rate) {
+#ifdef HAVE_LIBSOXR
+        int total_samples = result.len / (2 * obj->intern->channels);
+        size_t out_samples = (size_t)((double)total_samples * pcm_rate_out / obj->intern->sample_rate) + 128;
+
+        opus_int16 *resampled = (opus_int16*)emalloc(out_samples * obj->intern->channels * sizeof(opus_int16));
+
+        size_t idone, odone;
+        soxr_io_spec_t io = soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I);
+        soxr_quality_spec_t q_spec = soxr_quality_spec(SOXR_HQ, 0);
+
+        soxr_error_t err = soxr_oneshot(obj->intern->sample_rate, pcm_rate_out, obj->intern->channels,
+                                        (opus_int16*)result.c, total_samples, &idone,
+                                        resampled, out_samples, &odone,
+                                        &io, &q_spec, NULL);
+
+        if (err) {
+            efree(resampled);
+            smart_string_free(&result);
+            zend_throw_error(NULL, "Resampling failed: %s", err);
+            RETURN_THROWS();
+        }
+
+        smart_string_free(&result);
+        zend_string *ret_str = zend_string_init((char*)resampled, odone * obj->intern->channels * 2, 0);
+        efree(resampled);
+        RETURN_STR(ret_str);
+#else
+        smart_string_free(&result);
+        zend_throw_error(NULL, "Resampling not available (libsoxr required)");
+        RETURN_THROWS();
+#endif
+    }
+
+    smart_string_0(&result);
+    zend_string *ret_str = zend_string_init(result.c, result.len, 0);
+    smart_string_free(&result);
+
+    RETURN_STR(ret_str);
 }
 PHP_METHOD(opusChannel, resample)
 {
